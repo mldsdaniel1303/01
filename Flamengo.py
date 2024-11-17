@@ -1,51 +1,71 @@
-# Função para adicionar
+import math
+
 def add(x, y):
     return x + y
 
-# Função para subtrair
 def subtract(x, y):
     return x - y
 
-# Função para multiplicar
 def multiply(x, y):
     return x * y
 
-# Função para dividir
 def divide(x, y):
     if y == 0:
         return "Erro! Divisão por zero."
     return x / y
 
-print("Selecione a operação:")
-print("1.Adicionar")
-print("2.Subtrair")
-print("3.Multiplicar")
-print("4.Dividir")
+def power(x, y):
+    return x ** y
+
+def sine(x):
+    return math.sin(x)
+
+def cosine(x):
+    return math.cos(x)
+
+def tangent(x):
+    return math.tan(x)
+
+def get_choice():
+    operations = {
+        '1': add,
+        '2': subtract,
+        '3': multiply,
+        '4': divide,
+        '5': power,
+        '6': sine,
+        '7': cosine,
+        '8': tangent
+    }
+    while True:
+        try:
+            choice = input("Digite a escolha: ")
+            if choice in operations:
+                return operations[choice]
+            else:
+                print("Escolha inválida!")
+        except ValueError:
+            print("Entrada inválida. Por favor, digite um número.")
+
+def get_numbers():
+    while True:
+        try:
+            num1 = float(input("Digite o primeiro número: "))
+            num2 = float(input("Digite o segundo número: "))
+            return num1, num2
+        except ValueError:
+            print("Entrada inválida. Por favor, digite um número.")
 
 while True:
-    # Receber a entrada do usuário
-    escolha = input("Digite a escolha (1/2/3/4): ")
+    operation = get_choice()
+    num1, num2 = get_numbers()
 
-    # Verificar se a escolha é uma das opções
-    if escolha in ['1', '2', '3', '4']:
-        num1 = float(input("Digite o primeiro número: "))
-        num2 = float(input("Digite o segundo número: "))
+    try:
+        result = operation(num1, num2)
+        print(f"{num1} {operation.__name__} {num2} = {result}")
+    except TypeError:
+        print("Essa operação requer dois números.")
 
-        if escolha == '1':
-            print(num1, "+", num2, "=", add(num1, num2))
-
-        elif escolha == '2':
-            print(num1, "-", num2, "=", subtract(num1, num2))
-
-        elif escolha == '3':
-            print(num1, "*", num2, "=", multiply(num1, num2))
-
-        elif escolha == '4':
-            print(num1, "/", num2, "=", divide(num1, num2))
-        
-        # Perguntar ao usuário se deseja realizar outra operação
-        repetir = input("Quer realizar outra operação? (sim/não): ")
-        if repetir.lower() != 'sim':
-            break
-    else:
-        print("Escolha inválida!")
+    repeat = input("Quer realizar outra operação? (sim/não): ")
+    if repeat.lower() != 'sim':
+        break
