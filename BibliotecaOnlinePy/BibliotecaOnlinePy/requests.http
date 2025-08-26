@@ -1,0 +1,63 @@
+### Listar todas
+GET http://localhost:8000/api/publicacoes/
+
+### Filtrar por tipo
+GET http://localhost:8000/api/publicacoes/?tipo=Livro
+
+### Obter por Id
+GET http://localhost:8000/api/publicacoes/1
+
+### Criar Livro
+POST http://localhost:8000/api/publicacoes/
+Content-Type: application/json
+
+{
+  "tipo": "Livro",
+  "titulo": "Clean Code",
+  "autor": "Robert C. Martin",
+  "ano": 2008,
+  "paginas": 464,
+  "genero": "Engenharia de Software"
+}
+
+### Criar Revista
+POST http://localhost:8000/api/publicacoes/
+Content-Type: application/json
+
+{
+  "tipo": "Revista",
+  "titulo": "National Geographic",
+  "autor": "Vários",
+  "ano": 2024,
+  "edicao": 105,
+  "mes": "Abril"
+}
+
+### Criar Jornal
+POST http://localhost:8000/api/publicacoes/
+Content-Type: application/json
+
+{
+  "tipo": "Jornal",
+  "titulo": "Diário da Manhã",
+  "autor": "Redação",
+  "ano": 2025,
+  "data_publicacao": "2025-08-20",
+  "caderno": "Política"
+}
+
+### Atualizar (PUT) - substitui o item
+PUT http://localhost:8000/api/publicacoes/2
+Content-Type: application/json
+
+{
+  "tipo": "Livro",
+  "titulo": "Refatoração",
+  "autor": "Martin Fowler",
+  "ano": 1999,
+  "paginas": 431,
+  "genero": "Computação"
+}
+
+### Deletar
+DELETE http://localhost:8000/api/publicacoes/3
