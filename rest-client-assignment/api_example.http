@@ -1,0 +1,23 @@
+### Health
+GET http://127.0.0.1:5000/health
+
+### List users
+GET http://127.0.0.1:5000/users
+
+### Get single user
+GET http://127.0.0.1:5000/users/1
+
+### List products
+GET http://127.0.0.1:5000/products
+
+### Create order (JSON)
+POST http://127.0.0.1:5000/orders
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "product_ids": [1,2]
+}
+
+### List orders
+GET http://127.0.0.1:5000/orders
